@@ -56,9 +56,10 @@
 // http://www.mcternan.me.uk/ArmStackUnwinding/
 #define CONFIG_CRASH_LOG
 
+#define CONFIG_AUTOBACKUP_ROM
+
 // We can't yet rely on image capture.  Cam crashes due to null pointer,
 // I think?  If it fails to AF lock, for example.
 #define CONFIG_IMAGE_CAPTURE_NOT_WORKING
 
 #undef CONFIG_ADDITIONAL_VERSION
-#undef CONFIG_AUTOBACKUP_ROM

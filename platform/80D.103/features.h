@@ -35,7 +35,8 @@
 #define FEATURE_PICSTYLE
 #define CONFIG_PROP_REQUEST_CHANGE
 
+#define CONFIG_AUTOBACKUP_ROM
+#define CONFIG_CRASH_LOG
+
 // explicitly disable stuff that don't work or may break things
 #undef CONFIG_STATE_OBJECT_HOOKS
-#undef CONFIG_CRASH_LOG
-#undef CONFIG_AUTOBACKUP_ROM

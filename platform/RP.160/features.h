@@ -16,6 +16,7 @@
 #define FEATURE_SCREENSHOT
 
 #define CONFIG_CRASH_LOG
+#define CONFIG_AUTOBACKUP_ROM
 
 // We can't yet rely on image capture.  Cam crashes due to null pointer,
 // I think?  If it fails to AF lock, for example.
@@ -23,4 +24,3 @@
 
 #undef CONFIG_ADDITIONAL_VERSION
 #undef CONFIG_PROP_REQUEST_CHANGE
-#undef CONFIG_AUTOBACKUP_ROM

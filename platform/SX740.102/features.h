@@ -31,6 +31,7 @@
 // I think?  If it fails to AF lock, for example.
 #define CONFIG_IMAGE_CAPTURE_NOT_WORKING
 
-#undef CONFIG_CRASH_LOG
+#define CONFIG_CRASH_LOG
+#define CONFIG_AUTOBACKUP_ROM
+
 #undef CONFIG_PROP_REQUEST_CHANGE
-#undef CONFIG_AUTOBACKUP_ROM
