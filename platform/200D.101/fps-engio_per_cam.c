@@ -4,7 +4,23 @@
 int get_fps_register_a(void)
 {
     extern int _get_fps_register_a(void);
-    return _get_fps_register_a();
+    return _get_fps_register_a(); // This is wrong, probably some shutter related func.
+                                  // String usage at e032b1d6 is puzzling though.
+//    return shamem_read(FPS_REGISTER_A); // always reads 0
+//    return *(int *)(FPS_REGISTER_A); // always reads 0
+
+// candidates in sensor struct:
+// 1c790 // prob not, seen 64 and 520
+// 1c794 // no, seen it as 0 or 1
+// 1c798 // no, only seen 0
+// 1c7cc // "PreAccumH" // it's something related, seen 1121 and 373,
+                        // but not AccumH (not surprising give the name)
+// obvious candidates in this addr range exhausted
+
+// weirder candidates
+// 1a392 via e00b2aea // always 0
+// 91e76 // changes, sensible ish numbers, but not the right ones
+
 }
 
 int get_fps_register_a_default(void)
@@ -30,4 +46,6 @@ int get_fps_register_b(void)
 {
     extern int _get_fps_register_b(void);
     return _get_fps_register_b();
+
+//    return shamem_read(FPS_REGISTER_B); // this always reads 0
 }
