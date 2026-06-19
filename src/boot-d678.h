@@ -1,4 +1,4 @@
-#ifndef __BOOT_D678_h
+#ifndef __BOOT_D678_H_
 #define __BOOT_D678_H_
 
 #ifdef CONFIG_DIGIC_678X
@@ -78,5 +78,5 @@ struct dryos_init_info
 
 
 
-#endif // __BOOT_D678_H
+#endif // __BOOT_D678_H_
 
