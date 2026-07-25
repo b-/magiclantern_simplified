@@ -194,8 +194,13 @@ help()
 void
 ptpcam_siginthandler(int signum)
 {
-    PTP_USB* ptp_usb=(PTP_USB *)globalparams->data;
-    struct usb_device *dev=usb_device(ptp_usb->handle);
+    PTP_USB *ptp_usb = NULL;
+    struct usb_device *dev = NULL;
+
+    if (globalparams != NULL)
+        ptp_usb = (PTP_USB *)globalparams->data;
+    if (ptp_usb != NULL)
+        dev = usb_device(ptp_usb->handle);
 
     if (signum==SIGINT)
     {
@@ -368,6 +373,9 @@ clear_stall(PTP_USB* ptp_usb)
 void
 close_usb(PTP_USB* ptp_usb, struct usb_device* dev)
 {
+    if (ptp_usb == NULL
+        || usb_device == NULL)
+        return;
     //clear_stall(ptp_usb);
     usb_release_interface(ptp_usb->handle,
                           dev->config->interface->altsetting->bInterfaceNumber);

@@ -76,7 +76,7 @@ ptp_debug (PTPParams *params, const char *format, ...)
     va_list args;
 
     va_start (args, format);
-    if (params->debug_func!=NULL)
+    if (params != NULL && params->debug_func != NULL)
         params->debug_func (params->data, format, args);
     else
     {
@@ -93,7 +93,7 @@ ptp_error (PTPParams *params, const char *format, ...)
     va_list args;
 
     va_start (args, format);
-    if (params->error_func!=NULL)
+    if (params != NULL && params->error_func != NULL)
         params->error_func (params->data, format, args);
     else
     {
