@@ -13,7 +13,9 @@ ifndef TOP_DIR
     endif
 endif
 
-ARM_BINPATH = /usr/bin
+# conditionally set ARM binpath, to allow overriding in env / CLI
+ARM_BINPATH ?= /usr/bin
+
 ARM_ABI = none-eabi
 CROSS_COMPILE = $(ARM_BINPATH)/arm-$(ARM_ABI)-
 HOST_CC = gcc
