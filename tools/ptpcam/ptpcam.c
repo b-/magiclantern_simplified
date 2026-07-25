@@ -3037,7 +3037,7 @@ int chdk(int busn, int devn, short force)
                         printf("PTPbuf overflowed. The dump is incomplete!\n");
                     }
                     
-                    if((fetchable = ptp_chdk_get_memory(ptpbuf->fetchable, ptpbuf->buffer_count * 4,&params,&params.deviceinfo)) == NULL )
+                    if((fetchable = ptp_chdk_get_memory((int)(ptpbuf->fetchable), ptpbuf->buffer_count * 4,&params,&params.deviceinfo)) == NULL )
                     {
                         printf("error getting memory\n");
                         error = 1;
@@ -3076,7 +3076,7 @@ int chdk(int busn, int devn, short force)
                                         
                                         while(pos < buffer->bytes_used)
                                         {
-                                            ptpbuf_packet_t *packet = &(buffer->data) + pos;
+                                            ptpbuf_packet_t *packet = (ptpbuf_packet_t *)(&(buffer->data) + pos);
                                             uint8_t *payload = &(buffer->data) + pos + sizeof(ptpbuf_packet_t);
                                             uint32_t packet_length = sizeof(ptpbuf_packet_t) + packet->length;
                                             

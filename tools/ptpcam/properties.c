@@ -779,7 +779,7 @@ static struct {
 			} \
 			else {\
 				if (desc[i].dpc==dpd->DevicePropertyCode) \
-					return (((const char* (*) ()) desc[i].val) (params, dpd, strval)); \
+					return (((const char* (*) (PTPParams *, PTPDevicePropDesc *, const char *)) desc[i].val) (params, dpd, strval)); \
 			}\
 		}	\
 	}
