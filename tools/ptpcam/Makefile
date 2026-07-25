@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=
+CFLAGS=-m32
 LDFLAGS=-lusb
 
 all: ptpcam
