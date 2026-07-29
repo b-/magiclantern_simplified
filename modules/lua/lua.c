@@ -22,7 +22,6 @@
 #include <dryos.h>
 #include <string.h>
 #include <math.h>
-#include <raw.h>
 #include <lens.h>
 #include <property.h>
 #include <console.h>
