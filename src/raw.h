@@ -66,6 +66,8 @@ Which better explains the layout of the following raw_pixblock struct.
 #ifndef _raw_h_
 #define _raw_h_
 
+#include "compiler.h" // for SIZE_CHECK_STRUCT
+
 /* group 8 pixels in 14 bytes to simplify decoding */
 struct raw_pixblock
 {
