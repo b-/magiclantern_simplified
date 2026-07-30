@@ -115,10 +115,10 @@ create_named_semaphore(
                             // Use SEM_CREATE_LOCKED and SEM_CREATE_UNLOCKED.
 );
 
-// On D45 cams, passing in a NULL pointer is an error,
-// but the zero page is mapped and there's no memory protection,
-// so it will work.
+// On D45 cams, passing a sem which is 0 or low-bit 1 is an error.
 // On modern cams, this is an OS assert so must be avoided.
+// This is not really a pointer, it's a bitfield containing
+// an ID and at least one status bit (the low bit).
 //
 // A timeout of 0 means wait forever.
 //

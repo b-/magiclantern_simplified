@@ -71,14 +71,16 @@ static inline uint8_t audio_gain_to_cmd(int gain);
 
 struct gain_struct
 {
-    struct semaphore *      sem;
-    unsigned                alc1;
-    unsigned                sig1;
-    unsigned                sig2;
+    struct semaphore *sem; // not really a pointer, it's a bitfield, most of which is ID
+    unsigned          alc1;
+    unsigned          sig1;
+    unsigned          sig2;
 };
 
 static struct gain_struct gain = {
-    .sem                    = (void*) 1,
+    .sem = NULL, // Probably the low bit means invalid sem ID.
+                 // Early versions would error if they saw all 0 or low-bit 1,
+                 // later versions assert.
 };
 
 
@@ -1061,7 +1063,8 @@ enable_recording(int mode)
             #if defined(CONFIG_600D) || defined(CONFIG_7D)
             audio_configure(1);
             #else
-            give_semaphore( gain.sem );
+            if (gain.sem != NULL)
+                give_semaphore(gain.sem);
             #endif
             break;
         case 1:
@@ -1076,7 +1079,8 @@ enable_recording(int mode)
 // to be called from some other tasks that may mess with audio 
 static void audio_force_reconfigure() 
 {
-    give_semaphore( gain.sem ); 
+    if (gain.sem != NULL)
+        give_semaphore(gain.sem);
 }
 
 static void
