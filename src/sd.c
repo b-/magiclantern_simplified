@@ -52,7 +52,7 @@ struct patch mode_192[] =
         .old_value = 0x7,
         .new_value = 0x8,
         .size = 4,
-        .description = "Allow 192MHz SD speed (130)"
+        .description = "Allow 156MHz SD speed (130)"
     },
 };
 #endif // CONFIG_MMU_REMAP && CONFIG_200D
