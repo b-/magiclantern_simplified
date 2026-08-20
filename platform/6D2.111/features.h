@@ -21,6 +21,9 @@
 #define CONFIG_SGI_HANDLERS
 #define CONFIG_MMU_REMAP
 
+// We are able to override the MOV / MP4 29:59 limit
+#define FEATURE_OVERRIDE_MOVIE_30_MIN_LIMIT
+
 #define FEATURE_GLOBAL_DRAW
 //#define FEATURE_CROPMARKS // wants IMGPLAY_ZOOM_LEVEL_ADDR
 

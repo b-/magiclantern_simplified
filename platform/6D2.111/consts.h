@@ -130,6 +130,8 @@ extern int winsys_bmp_dirty_bit_neg;
 #define MVR_FRAME_NUMBER (*(int*)(220 + MVR_190_STRUCT))
 //#define MVR_LAST_FRAME_SIZE (*(int*)(512 + MVR_752_STRUCT))
 #define MVR_BYTES_WRITTEN MEM((212 + MVR_190_STRUCT))
+#define MVR_TIME_LIMIT_NORMAL_FPS 0xe042ff74 // can find via time limit literals, 1799000 (29m59s)
+#define MVR_TIME_LIMIT_HIGH_FPS 0xe042ff78   // and 449000 (7m29s)
 
 
 // SJE new stuff added after we have ML menus working!
