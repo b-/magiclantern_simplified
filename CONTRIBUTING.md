@@ -23,7 +23,16 @@ There's a lot more below, about how to keep things consistent and readable for M
 So, don't worry too much - we will teach you, so you can skip reading it if you don't mind us telling you to change things later on.
 
 ### Important note
-This repo is a fork.  However, the official repo is in practice unmaintained.  This repo's primary focus is getting ML working on newer cameras: Digic 6 and later, this begins with 5D mark IV, 750D, 200D era.  We also try to not break existing support.  Bug fixes or enhancements to old or new cams are welcome if there is reasonable confidence we don't break well supported cams.
+This repo has become the official repo.  If you are reading this from a different URL, you are likely looking at a fork - not the official repo:  
+[https://github.com/reticulatedpines/magiclantern_simplified](https://github.com/reticulatedpines/magiclantern_simplified)
+
+You can find references to other official repos; these are older, and include:  
+[https://foss.heptapod.net/magic-lantern/magic-lantern](https://foss.heptapod.net/magic-lantern/magic-lantern)
+[https://bitbucket.org/hudson/magic-lantern](https://bitbucket.org/hudson/magic-lantern)
+
+This repo's original focus was getting ML working on newer cameras: Digic 6 and later, this begins with 5D mark IV, 750D, 200D era.  We also try to not break existing support.  Bug fixes or enhancements to old or new cams are welcome if there is reasonable confidence we don't break well supported cams.
+
+This repo now tries to support all prior supported cams in the prior official repo, and is working towards integrating code that supports other older gen cameras.
 
 # Important resources & contact info
 Magic Lantern started in 2009, there's a lot of background that can be useful to understand.  This is messier than we'd like.  Some things are documented in the code, some on the forum, some in news groups, and some lost forever on IRC because there were no logs.
@@ -32,9 +41,6 @@ If you have problems getting a development environment working, asking in Discor
 
 The origin story!  
 [https://trmm.net/Magic_Lantern_firmware/](https://trmm.net/Magic_Lantern_firmware/)
-
-The official repo:  
-[https://foss.heptapod.net/magic-lantern/magic-lantern](https://foss.heptapod.net/magic-lantern/magic-lantern)
 
 Official forum, good for documenting things, or long running discussions that need to be referred to later.  
 [https://www.magiclantern.fm/forum/](https://www.magiclantern.fm/forum/)
@@ -52,15 +58,21 @@ The new wiki, it's nicer...  but it's far from complete:
 [https://wiki.magiclantern.fm/](https://wiki.magiclantern.fm/)
 
 # Building Magic Lantern
-The build system is make, and has a lot of inherited complexity.  Most of this can be ignored.  Assuming you want to work on an individual cam, the 99D, and your machine has 16 cores / threads, this is all that is needed:
+The build system is make, and has been greatly simplified over the prior official repo system.  Assuming you want to work on an individual cam, the 99D, and your machine has 16 cores / threads, this is all that is needed:
 
   - clone this repo
   - be in platform/99D
-  - run: `make -j16 zip`
+  - run: `make -j16`
   - (possibly, fix your build environment because we don't check for pre-requisites, then repeat the previous step...)
   - unzip the result onto a prepared card
 
-If using qemu for testing, the unzip step is not required, qemu run script will do this for you.
+There is currently a bug in the build system so that changes to module code are not visible for a platform build.
+
+This means you need to manually clean modules if you know a change has been made, or stale modules will be included in platform zip files.
+
+  - be in modules
+  - run: `make clean`
+  - run whatever cam build you're interested in
 
 The build system is currently tested on Linux, but is expected to work on Windows (via WSL) and Mac. Try not to obviously break this.  If we have a volunteer to test on other systems we could make this guarantee stronger.
 
@@ -125,7 +137,7 @@ The goal here is that someone finding this repo won't break their cam even if th
 
 Tests to run before commits:
 
-  - "make zip" in platform dir must succeed: all enabled cams should build
+  - "make" in platform dir must succeed: all enabled cams should build
   - no new compiler warnings
 
 Tests to run before merges to dev:
