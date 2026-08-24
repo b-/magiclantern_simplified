@@ -3463,7 +3463,7 @@ void raw_video_rec_task(uint32_t card_index)
             beep();
         }
 
-        int fps = fps_get_current_x1000();
+        fps = fps_get_current_x1000();
         if (fps == 0)
             goto cleanup;
 
