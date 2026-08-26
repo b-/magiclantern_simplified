@@ -62,8 +62,7 @@ installer/*/*.lds
 installer/*/build
 installer/build
 doc/Cropmarks550D.png
-contrib/ptpcam/ptpcam
-contrib/make-bootable/exfat_sum
+tools/ptpcam/ptpcam
 doc/cam
 INSTALL.tex-e
 UserGuide.tex-e
