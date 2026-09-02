@@ -35,6 +35,9 @@ const uint32_t prop_handler_deny[] =
 const uint32_t prop_write_allow[] =
 {
     PROP_ICU_AUTO_POWEROFF, // used in multiple places, incl. installer / uninstaller
+    PROP_LV_ACTION, // needed to avoid mlv_lite getting into a bad state,
+                    // where trying to record two videos without exiting LV / entering ML menus
+                    // will trigger a hard lock on cam.  See issue 307
     PROP_BUTTON_ASSIGNMENT,
     PROP_REMOTE_SW1,
     PROP_REMOTE_SW2

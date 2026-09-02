@@ -36,6 +36,10 @@ const uint32_t prop_write_allow [] =
 {
     PROP_ICU_AUTO_POWEROFF,
 
+    PROP_LV_ACTION, // needed to avoid mlv_lite getting into a bad state,
+                    // where trying to record two videos without exiting LV / entering ML menus
+                    // will trigger a hard lock on cam.  See issue 307
+
     // Need these two for intervalometer in cont. drive mode
     // (and presumably lots of other stuff)
     PROP_REMOTE_SW1, // half shutter
